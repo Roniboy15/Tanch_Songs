@@ -138,7 +138,7 @@ begin
     nullif(p_lyrics, ''),
     nullif(p_notes, ''),
     'pending'
-  )
+  );
 
   return new_id;
 end;
