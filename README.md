@@ -10,7 +10,7 @@ This project builds a relational Tanach database and a song-linking interface on
 - Phase 4 complete: RLS policies enable public submissions with admin moderation
 - Phase 5 complete: app-facing views/functions for feed + moderation queue
 - Phase 6 complete: web pages for submission and moderation
-- Phase 7 ready: verse-linked submission flow added
+- Phase 7 complete: strict selector-based verse linking (no free-text references)
 
 ## Key Files
 

@@ -22,7 +22,12 @@ function escapeHtml(value) {
 }
 
 async function requireSessionMessage() {
-  const { data } = await supabase.auth.getSession();
+  const { data, error } = await supabase.auth.getSession();
+  if (error) {
+    setAuthStatus(`Session check failed: ${error.message}`, 'error');
+    return;
+  }
+
   if (data.session) {
     setAuthStatus(`Signed in as ${data.session.user.email}`, 'ok');
   } else {
@@ -127,10 +132,14 @@ refreshQueueBtn.addEventListener('click', () => {
   loadQueue();
 });
 
-supabase.auth.onAuthStateChange(async () => {
-  await requireSessionMessage();
-  await loadQueue();
+supabase.auth.onAuthStateChange(() => {
+  requireSessionMessage();
+  loadQueue();
 });
 
-await requireSessionMessage();
-await loadQueue();
+function init() {
+  requireSessionMessage();
+  loadQueue();
+}
+
+init();
