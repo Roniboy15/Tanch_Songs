@@ -113,13 +113,14 @@ security invoker
 set search_path = public
 as $$
 declare
-  new_id uuid;
+  new_id uuid := gen_random_uuid();
 begin
   if p_title is null or length(trim(p_title)) = 0 then
     raise exception 'title is required';
   end if;
 
   insert into public.songs (
+    id,
     title,
     artist_name,
     composer_name,
@@ -129,6 +130,7 @@ begin
     moderation_status
   )
   values (
+    new_id,
     trim(p_title),
     nullif(trim(p_artist_name), ''),
     nullif(trim(p_composer_name), ''),
@@ -137,7 +139,6 @@ begin
     nullif(p_notes, ''),
     'pending'
   )
-  returning id into new_id;
 
   return new_id;
 end;
