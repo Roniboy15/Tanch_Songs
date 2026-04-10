@@ -8,7 +8,8 @@ This project builds a relational Tanach database and a song-linking interface on
 - Phase 2 complete: CSV normalization and import workflow added
 - Phase 3 complete: song-to-verse linking layer added (exact + ranges)
 - Phase 4 complete: RLS policies enable public submissions with admin moderation
-- Phase 5 ready: app-facing views/functions for feed + moderation queue
+- Phase 5 complete: app-facing views/functions for feed + moderation queue
+- Phase 6 ready: web pages for submission and moderation
 
 ## Key Files
 
@@ -22,4 +23,7 @@ This project builds a relational Tanach database and a song-linking interface on
 - `docs/phase-3-song-linking.md`
 - `docs/phase-4-rls.md`
 - `docs/phase-5-app-queries.md`
+- `docs/phase-6-frontend.md`
+- `web/public/index.html`
+- `web/admin/index.html`
 - `scripts/normalize_tanach_csvs.py`

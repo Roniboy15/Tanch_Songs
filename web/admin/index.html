@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tanach Songs | Admin Queue</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <h1>Moderation Queue</h1>
+        <p>Sign in with your admin email, then approve or reject pending submissions.</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Admin Login</h2>
+          <label for="admin-email">Email</label>
+          <input id="admin-email" type="email" placeholder="you@example.com" />
+          <button id="send-link" type="button">Send Magic Link</button>
+          <button id="logout" class="secondary" type="button">Log Out</button>
+          <p id="auth-status" class="status" aria-live="polite"></p>
+        </article>
+
+        <article class="card">
+          <h2>Pending Songs</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Status</th>
+                  <th>Links</th>
+                  <th>Submitted</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="queue-body"></tbody>
+            </table>
+          </div>
+          <button id="refresh-queue" class="secondary" type="button">Refresh Queue</button>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

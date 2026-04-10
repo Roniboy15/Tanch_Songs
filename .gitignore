@@ -8,3 +8,6 @@
 
 # macOS
 .DS_Store
+
+# Frontend local config
+web/shared/config.js
