@@ -125,7 +125,8 @@ begin
     composer_name,
     source_url,
     lyrics,
-    notes
+    notes,
+    moderation_status
   )
   values (
     trim(p_title),
@@ -133,7 +134,8 @@ begin
     nullif(trim(p_composer_name), ''),
     nullif(trim(p_source_url), ''),
     nullif(p_lyrics, ''),
-    nullif(p_notes, '')
+    nullif(p_notes, ''),
+    'pending'
   )
   returning id into new_id;
 
