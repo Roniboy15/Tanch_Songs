@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tanach Songs | Add Song</title>
+    <link rel="stylesheet" href="../shared/styles.css?v=202605071950" />
+  </head>
+  <body>
+    <main>
+      <nav class="top-nav" aria-label="Public navigation">
+        <a href="./index.html">Home</a>
+        <a class="active" href="./add-song.html">Add Song</a>
+        <a href="./search-song.html">Search Song</a>
+      </nav>
+
+      <section class="hero">
+        <h1>Add Song</h1>
+        <p>Submit a song and connect it to exact verses or one continuous verse range.</p>
+      </section>
+
+      <section class="grid single-column-grid">
+        <article class="card">
+          <h2>New Submission</h2>
+          <form id="song-form">
+            <label for="title">Title (required)</label>
+            <input id="title" name="title" required maxlength="180" />
+
+            <div class="row">
+              <div>
+                <label for="artist_name">Artist</label>
+                <input id="artist_name" name="artist_name" maxlength="180" />
+              </div>
+              <div>
+                <label for="composer_name">Composer</label>
+                <input id="composer_name" name="composer_name" maxlength="180" />
+              </div>
+            </div>
+
+            <label for="source_url">Source URL</label>
+            <input id="source_url" name="source_url" type="url" maxlength="300" />
+
+            <label for="lyrics">Lyrics</label>
+            <textarea id="lyrics" name="lyrics" maxlength="10000"></textarea>
+
+            <h3>Choose Link Method</h3>
+            <div class="row">
+              <label><input type="radio" name="link_mode" value="exact" checked /> Exact verses</label>
+              <label><input type="radio" name="link_mode" value="range" /> Verse range</label>
+            </div>
+
+            <section id="exact-section">
+              <h3>Exact Verse Links</h3>
+              <div class="row">
+                <div>
+                  <label for="exact_book">Book</label>
+                  <select id="exact_book"></select>
+                </div>
+                <div>
+                  <label for="exact_chapter">Chapter</label>
+                  <select id="exact_chapter"></select>
+                </div>
+              </div>
+              <label for="exact_verse">Verse</label>
+              <select id="exact_verse"></select>
+              <button id="add-exact" type="button">Add Exact Verse To List</button>
+              <div id="exact-selected" class="status"></div>
+            </section>
+
+            <section id="range-section" style="display:none;">
+              <h3>Verse Range (Single Book)</h3>
+              <div class="row">
+                <div>
+                  <label for="range_book">Book</label>
+                  <select id="range_book"></select>
+                </div>
+                <div></div>
+              </div>
+
+              <div class="row">
+                <div>
+                  <label for="range_start_chapter">Range Start Chapter</label>
+                  <select id="range_start_chapter"></select>
+                </div>
+                <div>
+                  <label for="range_start_verse">Range Start Verse</label>
+                  <select id="range_start_verse"></select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div>
+                  <label for="range_end_chapter">Range End Chapter</label>
+                  <select id="range_end_chapter"></select>
+                </div>
+                <div>
+                  <label for="range_end_verse">Range End Verse</label>
+                  <select id="range_end_verse"></select>
+                </div>
+              </div>
+            </section>
+
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" maxlength="2000"></textarea>
+
+            <button id="submit-btn" type="submit">Submit Song</button>
+            <p id="submit-status" class="status" aria-live="polite"></p>
+            <div id="submit-confirmation" hidden></div>
+          </form>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="./add-song.js?v=202605071930"></script>
+  </body>
+</html>

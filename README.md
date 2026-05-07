@@ -11,6 +11,7 @@ This project builds a relational Tanach database and a song-linking interface on
 - Phase 5 complete: app-facing views/functions for feed + moderation queue
 - Phase 6 complete: web pages for submission and moderation
 - Phase 7 complete: strict selector-based verse linking (no free-text references)
+- Phase 8 ready: admin review detail panel with link inspection/removal
 
 ## Key Files
 
@@ -27,6 +28,7 @@ This project builds a relational Tanach database and a song-linking interface on
 - `docs/phase-5-app-queries.md`
 - `docs/phase-6-frontend.md`
 - `docs/phase-7-verse-link-submission.md`
+- `docs/phase-8-admin-review-detail.md`
 - `web/public/index.html`
 - `web/admin/index.html`
 - `scripts/normalize_tanach_csvs.py`

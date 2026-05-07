@@ -10,7 +10,8 @@
     <main>
       <section class="hero">
         <h1>Moderation Queue</h1>
-        <p>Sign in with your admin email, then approve or reject pending submissions.</p>
+        <p>Sign in with your admin email, review links, then approve or reject submissions.</p>
+        <p><small>Build: 2026-05-07 16:00</small></p>
       </section>
 
       <section class="grid">
@@ -41,9 +42,19 @@
           </div>
           <button id="refresh-queue" class="secondary" type="button">Refresh Queue</button>
         </article>
+
+        <article class="card">
+          <h2>Review Detail</h2>
+          <p id="detail-status" class="status">Select a pending song to inspect and edit fields, then approve or reject.</p>
+          <div id="song-meta"></div>
+          <h3>Exact Links</h3>
+          <div id="detail-exact"></div>
+          <h3>Range Links</h3>
+          <div id="detail-ranges"></div>
+        </article>
       </section>
     </main>
 
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./app.js?v=202605071600"></script>
   </body>
 </html>

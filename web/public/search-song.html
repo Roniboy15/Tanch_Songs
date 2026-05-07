@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tanach Songs | Search Song</title>
+    <link rel="stylesheet" href="../shared/styles.css?v=202605071950" />
+  </head>
+  <body>
+    <main>
+      <nav class="top-nav" aria-label="Public navigation">
+        <a href="./index.html">Home</a>
+        <a href="./add-song.html">Add Song</a>
+        <a class="active" href="./search-song.html">Search Song</a>
+      </nav>
+
+      <section class="hero">
+        <h1>Search Songs</h1>
+        <p>Find songs by verse, title, artist, lyrics, notes, and linked references.</p>
+      </section>
+
+      <section class="grid single-column-grid">
+        <article class="card">
+          <h2>By Book / Chapter / Verse</h2>
+          <div class="row">
+            <div>
+              <label for="lookup_book">Book</label>
+              <select id="lookup_book"></select>
+            </div>
+            <div>
+              <label for="lookup_chapter">Chapter</label>
+              <select id="lookup_chapter"></select>
+            </div>
+          </div>
+          <label for="lookup_verse">Verse</label>
+          <select id="lookup_verse"></select>
+          <button id="lookup-btn" type="button">Find Linked Songs</button>
+          <p id="lookup-status" class="status" aria-live="polite"></p>
+          <div id="lookup-results"></div>
+        </article>
+
+        <article class="card">
+          <h2>Search Anything</h2>
+          <label for="song-search">One Search Field (title, artist, lyrics, notes, links...)</label>
+          <input id="song-search" maxlength="140" placeholder="Try: Genesis 1:1, artist name, lyric phrase..." />
+          <div class="actions">
+            <button id="song-search-btn" type="button">Search</button>
+            <button id="clear-search-btn" class="secondary" type="button">Clear</button>
+          </div>
+          <p id="search-status" class="status" aria-live="polite"></p>
+          <div id="search-results"></div>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="./search-song.js?v=202605071930"></script>
+  </body>
+</html>

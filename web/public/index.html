@@ -3,105 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tanach Songs | Submit</title>
-    <link rel="stylesheet" href="../shared/styles.css" />
+    <title>Tanach Songs | Home</title>
+    <link rel="stylesheet" href="../shared/styles.css?v=202605071950" />
   </head>
   <body>
     <main>
+      <nav class="top-nav" aria-label="Public navigation">
+        <a class="active" href="./index.html">Home</a>
+        <a href="./add-song.html">Add Song</a>
+        <a href="./search-song.html">Search Song</a>
+      </nav>
+
       <section class="hero">
-        <h1>Share A Tanach Song</h1>
-        <p>Anyone can submit. Verse links are selected from Tanach only (no free text).</p>
+        <h1>Holy Links</h1>
+        <p>Discover the latest connected songs and explore meaningful texts.</p>
       </section>
 
-      <section class="grid">
-        <article class="card">
-          <h2>New Submission</h2>
-          <form id="song-form">
-            <label for="title">Title (required)</label>
-            <input id="title" name="title" required maxlength="180" />
-
-            <div class="row">
-              <div>
-                <label for="artist_name">Artist</label>
-                <input id="artist_name" name="artist_name" maxlength="180" />
-              </div>
-              <div>
-                <label for="composer_name">Composer</label>
-                <input id="composer_name" name="composer_name" maxlength="180" />
-              </div>
-            </div>
-
-            <label for="source_url">Source URL</label>
-            <input id="source_url" name="source_url" type="url" maxlength="300" />
-
-            <h3>Exact Verse Links</h3>
-            <div class="row">
-              <div>
-                <label for="exact_book">Book</label>
-                <select id="exact_book"></select>
-              </div>
-              <div>
-                <label for="exact_chapter">Chapter</label>
-                <select id="exact_chapter"></select>
-              </div>
-            </div>
-            <label for="exact_verse">Verse</label>
-            <select id="exact_verse"></select>
-            <button id="add-exact" class="secondary" type="button">Add Exact Verse</button>
-            <div id="exact-selected" class="status"></div>
-
-            <h3>Optional Range Link</h3>
-            <div class="row">
-              <div>
-                <label for="range_start_book">Range Start Book</label>
-                <select id="range_start_book"></select>
-              </div>
-              <div>
-                <label for="range_start_chapter">Range Start Chapter</label>
-                <select id="range_start_chapter"></select>
-              </div>
-            </div>
-            <label for="range_start_verse">Range Start Verse</label>
-            <select id="range_start_verse"></select>
-
-            <div class="row">
-              <div>
-                <label for="range_end_book">Range End Book</label>
-                <select id="range_end_book"></select>
-              </div>
-              <div>
-                <label for="range_end_chapter">Range End Chapter</label>
-                <select id="range_end_chapter"></select>
-              </div>
-            </div>
-            <label for="range_end_verse">Range End Verse</label>
-            <select id="range_end_verse"></select>
-
-            <label for="range_relationship_type">Range Type</label>
-            <select id="range_relationship_type" name="range_relationship_type">
-              <option value="quotation">quotation (recommended)</option>
-              <option value="theme">theme</option>
-              <option value="allusion">allusion</option>
-              <option value="exact">exact</option>
-            </select>
-
-            <label for="notes">Notes</label>
-            <textarea id="notes" name="notes" maxlength="2000"></textarea>
-
-            <button id="submit-btn" type="submit">Submit Song</button>
-            <p id="submit-status" class="status" aria-live="polite"></p>
-          </form>
+      <section class="grid home-grid">
+        <article class="card welcome-card">
+          <h2>Welcome!</h2>
+          <p>
+            This project helps you connect songs to their sources in Tanach / Bible in one shared place.
+            Use the top menu to add new submissions or search existing songs by verse and text.
+          </p>
+          <img
+            class="welcome-image"
+            src="/data/moses.jpg"
+            alt="Welcome placeholder image"
+          />
         </article>
 
-        <article class="card">
-          <h2>Recently Approved (With Links)</h2>
-          <p>Only approved songs with at least one verse link appear here.</p>
+        <article id="approved-card" class="card">
+          <h2>Recently Connected</h2>
           <div id="approved-list"></div>
           <button id="refresh-approved" class="secondary" type="button">Refresh</button>
         </article>
       </section>
     </main>
 
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./home.js?v=202605071930"></script>
   </body>
 </html>
