@@ -1,5 +1,7 @@
 import { supabase, formatDate } from '../shared/supabase.js';
 
+window.__adminAppBooted = true;
+
 const RELATIONSHIP_TYPES = ['exact', 'quotation', 'theme', 'allusion'];
 
 const emailInput = document.getElementById('admin-email');
@@ -1032,6 +1034,7 @@ window.addEventListener('error', (event) => {
 });
 
 function init() {
+  setAuthStatus('Admin app loaded. Ready to send magic link.', 'warn');
   requireSessionMessage();
   loadQueue();
   renderEmptyDetail();

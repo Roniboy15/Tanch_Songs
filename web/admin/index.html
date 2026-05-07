@@ -11,7 +11,7 @@
       <section class="hero">
         <h1>Moderation Queue</h1>
         <p>Sign in with your admin email, review links, then approve or reject submissions.</p>
-        <p><small>Build: 2026-05-07 16:00</small></p>
+        <p><small>Build: 2026-05-07 22:20</small></p>
       </section>
 
       <section class="grid">
@@ -55,6 +55,19 @@
       </section>
     </main>
 
-    <script type="module" src="/web/admin/app.js?v=202605072205"></script>
+    <script>
+      window.__adminAppBooted = false;
+      window.addEventListener('DOMContentLoaded', () => {
+        const sendLinkBtn = document.getElementById('send-link');
+        const authStatus = document.getElementById('auth-status');
+        if (!sendLinkBtn || !authStatus) return;
+        sendLinkBtn.addEventListener('click', () => {
+          if (window.__adminAppBooted) return;
+          authStatus.textContent = 'Admin script did not load. Force refresh and try again.';
+          authStatus.className = 'status error';
+        });
+      });
+    </script>
+    <script type="module" src="/web/admin/app.js?v=202605072220"></script>
   </body>
 </html>
