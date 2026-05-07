@@ -160,17 +160,30 @@ async function sendMagicLink() {
   }
 
   const redirectTo = `${window.location.origin}${window.location.pathname}`;
-  const { error } = await supabase.auth.signInWithOtp({
-    email,
-    options: { emailRedirectTo: redirectTo }
-  });
+  setAuthStatus(`Sending magic link to ${email}...`, 'warn');
+  sendLinkBtn.disabled = true;
 
-  if (error) {
-    setAuthStatus(`Could not send magic link: ${error.message}`, 'error');
-    return;
+  try {
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: redirectTo }
+    });
+
+    if (error) {
+      console.error('Magic link send failed', { email, redirectTo, error });
+      setAuthStatus(`Could not send magic link: ${error.message}`, 'error');
+      return;
+    }
+
+    console.info('Magic link request sent', { email, redirectTo });
+    setAuthStatus('Magic link sent. Check inbox/spam and open it in this browser.', 'ok');
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error('Magic link request threw', { email, redirectTo, error });
+    setAuthStatus(`Could not send magic link: ${message}`, 'error');
+  } finally {
+    sendLinkBtn.disabled = false;
   }
-
-  setAuthStatus('Magic link sent. Open it in this browser to sign in.', 'ok');
 }
 
 async function loadQueue() {
@@ -855,8 +868,8 @@ async function moderate(songId, targetStatus) {
   }
 }
 
-sendLinkBtn.addEventListener('click', () => {
-  sendMagicLink();
+sendLinkBtn.addEventListener('click', async () => {
+  await sendMagicLink();
 });
 
 logoutBtn.addEventListener('click', async () => {
@@ -1006,6 +1019,16 @@ refreshQueueBtn.addEventListener('click', () => {
 supabase.auth.onAuthStateChange(() => {
   requireSessionMessage();
   loadQueue();
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+  const reason = event.reason instanceof Error ? event.reason.message : String(event.reason ?? 'Unknown error');
+  setAuthStatus(`Unexpected error: ${reason}`, 'error');
+});
+
+window.addEventListener('error', (event) => {
+  const message = event.error instanceof Error ? event.error.message : event.message;
+  setAuthStatus(`Unexpected error: ${message}`, 'error');
 });
 
 function init() {
